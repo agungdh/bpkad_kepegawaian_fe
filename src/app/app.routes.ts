@@ -1,18 +1,12 @@
 import { Routes } from '@angular/router';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginComponent } from './login/login.component';
 import { DefaultComponent } from './layout/default/default.component';
-import { DashboardComponent } from './page/dashboard/dashboard.component';
-import { PegawaiComponent } from './page/pegawai/pegawai.component';
-import { FormComponent as PegawaiFormComponent } from './page/pegawai/form/form.component';
 
 export const routes: Routes = [
   {path: '', component: DefaultComponent, children: [
-    {path: 'dashboard', component: DashboardComponent},
+    {path: 'dashboard', loadComponent: () => import('./page/dashboard/dashboard.component').then(mod => mod.DashboardComponent)},
 
-    {path: 'pegawai', component: PegawaiComponent},
-    {path: 'pegawai/form', component: PegawaiFormComponent},
+    {path: 'pegawai', loadChildren: () => import('./page/pegawai/routes').then(mod => mod.routes)},
   ]},
-  {path: 'login', component: LoginComponent},
-  {path: '**', component: NotFoundComponent},
+  {path: 'login', loadComponent: () => import('./page/login/login.component').then(mod => mod.LoginComponent)},
+  {path: '**', loadComponent: () => import('./page/not-found/not-found.component').then(mod => mod.NotFoundComponent)},
 ];

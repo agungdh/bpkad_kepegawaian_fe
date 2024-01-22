@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <form [formGroup]="loginForm" (ngSubmit)="loginFormSubmit()">
+    <mat-card-content>
+        <label>Username: </label>
+        <input type="text" formControlName="username">
+        <label>Password: </label>
+        <input type="password" formControlName="password">
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

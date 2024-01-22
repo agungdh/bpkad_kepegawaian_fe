@@ -3,7 +3,7 @@ import { DefaultComponent } from './layout/default/default.component';
 
 export const routes: Routes = [
   {path: '', component: DefaultComponent, children: [
-    {path: 'dashboard', loadComponent: () => import('./page/dashboard/dashboard.component').then(mod => mod.DashboardComponent)},
+    {path: '', loadComponent: () => import('./page/dashboard/dashboard.component').then(mod => mod.DashboardComponent)},
 
     {path: 'pegawai', loadChildren: () => import('./page/pegawai/routes').then(mod => mod.routes)},
   ]},

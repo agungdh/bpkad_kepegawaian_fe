@@ -4,10 +4,10 @@
   </mat-card-header>
   <form [formGroup]="loginForm" (ngSubmit)="loginFormSubmit()">
     <mat-card-content>
-        <label>Username: </label>
-        <input type="text" formControlName="username">
-        <label>Password: </label>
-        <input type="password" formControlName="password">
+      <mat-form-field class="example-full-width">
+        <mat-label>Favorite food</mat-label>
+        <input matInput formControlName="username" placeholder="Username" value="Sushi">
+      </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>

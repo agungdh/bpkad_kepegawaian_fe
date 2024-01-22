@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { RouterOutlet } from '@angular/router';
-
+import { MenuComponent } from './menu/menu.component';
 @Component({
   selector: 'app-nav',
   templateUrl: './default.component.html',
@@ -23,6 +23,7 @@ import { RouterOutlet } from '@angular/router';
     MatIconModule,
     AsyncPipe,
     RouterOutlet,
+    MenuComponent,
   ]
 })
 export class DefaultComponent {

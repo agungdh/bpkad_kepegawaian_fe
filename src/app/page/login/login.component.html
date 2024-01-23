@@ -5,11 +5,14 @@
   <form [formGroup]="loginForm" (ngSubmit)="loginFormSubmit()">
     <mat-card-content>
       <mat-form-field style="width: 100%;">
-        <mat-label>Username</mat-label>
-        <input matInput formControlName="username" placeholder="Username">
-        @if (loginForm.controls.username.invalid && (loginForm.controls.username.dirty || loginForm.controls.username.touched)) {
-          @if (loginForm.controls.username.errors?.['required']) {
-            <mat-error>Username is required</mat-error>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Email">
+        @if (loginForm.controls.email.invalid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)) {
+          @if (loginForm.controls.email.errors?.['required']) {
+            <mat-error>Email is required</mat-error>
+          }
+          @if (loginForm.controls.email.errors?.['email']) {
+            <mat-error>Email format is invalid</mat-error>
           }
         }
       </mat-form-field>

@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -21,12 +22,18 @@ import { Validators } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  constructor(private http: HttpClient) {
+
+  }
+
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
   });
 
   loginFormSubmit() {
-    console.log(this.loginForm.value)
+    this.http.post('http://127.0.0.1:8000/api/login', this.loginForm.value).subscribe(data => {
+      console.log(data)
+    })
   }
 }
